@@ -8,6 +8,7 @@
       <itemPath>inc/pwm.h</itemPath>
       <itemPath>inc/interrupt.h</itemPath>
       <itemPath>inc/configuration.h</itemPath>
+      <itemPath>inc/tcs3200.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -34,7 +35,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
-        <languageToolchainVersion>2.00</languageToolchainVersion>
+        <languageToolchainVersion>1.41</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>

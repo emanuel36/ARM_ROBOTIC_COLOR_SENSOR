@@ -6,8 +6,8 @@
 #include <pic18f4550.h>
 #include <xc.h>
 
-#define RS LATB0                    /*PIN 0 of PORTB is assigned for RS Pin of LCD*/
-#define EN LATB1                    /*PIN 1 of PORTB is assigned for ENABLE Pin of LCD */
+#define RS LATB2                    /*PIN 2 of PORTB is assigned for RS Pin of LCD*/
+#define EN LATB3                    /*PIN 3 of PORTB is assigned for EN Pin of LCD */
 #define ldata LATB                  /*PORTB(RB4-RB7) is assigned for LCD Data Output*/ 
 #define LCD_Port TRISB              /*define macros for PORTB Direction Register*/
 

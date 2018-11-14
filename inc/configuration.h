@@ -67,8 +67,8 @@
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
-#define _XTAL_FREQ  8000000
+#define _XTAL_FREQ  4000000
 
-char interrupt_flag;
+char interrupt_flag = 0xFF;
 
 #endif	/* CONFIGURATION_H */
