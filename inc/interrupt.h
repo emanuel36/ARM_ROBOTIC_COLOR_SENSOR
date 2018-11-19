@@ -5,13 +5,17 @@
 #include <stdlib.h>
 #include <xc.h>
 #include <pic18f4550.h>
-#include "../inc/lcd16x2.h"
 #include "configuration.h"
 
-void config_tmr0();
-void config_int0();
-void config_int1();
-void config_int2();
+void disable_ext_int(){
+    INTCONbits.INT0IE = 0;
+    INTCON3bits.INT1IE = 0;
+}
+
+void enable_ext_int(){
+    INTCONbits.INT0IE = 1;
+    INTCON3bits.INT1IE = 1;
+}
 
 void config_tmr0(){
     T0CONbits.PSA = 1;
@@ -50,7 +54,7 @@ void config_int1(){
     INTCONbits.PEIE_GIEL = 0;
     TRISBbits.RB1 = 1;
     INTCON3bits.INT1IE = 1;
-    INTCON2bits.INTEDG2 = 0;
+    INTCON2bits.INTEDG2 = 1;
     INTCON3bits.INT2IF = 0;
 }
 
@@ -67,11 +71,13 @@ void interrupt ISR(){
     if(INTCONbits.INT0IF){      //Botão 1 pressionado
         INTCONbits.INT0IF = 0;
         interrupt_flag = interrupt_flag ^ 1;
+        DutyPWM2 += 0.1;
     }
     
     if(INTCON3bits.INT1IF){     //Botão 2 pressionado    
         INTCON3bits.INT1IF = 0;
         interrupt_flag = interrupt_flag ^ 2;
+        DutyPWM2 -= 0.1;
     }
     
     if(INTCON3bits.INT2IF){     //Botão 3 pressionado

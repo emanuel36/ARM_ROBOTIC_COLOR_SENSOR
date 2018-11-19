@@ -4,10 +4,11 @@
 #include "interrupt.h"
 #include "lcd16x2.h"
 
-#define red   0
-#define blue  1
-#define clear 2
-#define green 3
+#define NO_COLOR 0
+#define RED      1
+#define BLUE     2
+#define CLEAR    3
+#define GREEN    4
 
 #define S0  PORTDbits.RD0
 #define S1  PORTDbits.RD1
@@ -26,22 +27,22 @@ void init_tcs3200(){
 
 void select_photodiode(int diode){
     switch(diode){
-        case red:
+        case RED:
             S2 = 0;
             S3 = 0;
             break;
             
-        case blue:
+        case BLUE:
             S2 = 0;
             S3 = 1;
             break;
             
-        case clear:
+        case CLEAR:
             S2 = 1;
             S3 = 0;
             break;
             
-        case green:
+        case GREEN:
             S2 = 1;
             S3 = 1;
             break;
@@ -63,28 +64,34 @@ int get_freq(){
     return TMR0;
 }
 
-void print_color(){
+int get_color(){
     int freq_red, freq_blue, freq_green;
-    char line_1[16], line_2[16];
     
-    select_photodiode(red);
+    select_photodiode(RED);
     __delay_ms(1);
     freq_red = get_freq()/10;
     
-    select_photodiode(green);
+    select_photodiode(GREEN);
     __delay_ms(1);
     freq_green = get_freq()/10;
     
-    select_photodiode(blue);
+    select_photodiode(BLUE);
     __delay_ms(1);
     freq_blue = get_freq()/10;
     
-    sprintf(line_1, "R:%dkHz G:%dkHz", freq_red, freq_green);
-    sprintf(line_2, "B:%dkHz", freq_blue);
-    
+    char display_2[16];
+    sprintf(display_2, "R:%d G:%d B:%d", freq_red, freq_green, freq_blue);
     LCD_Clear();
-    LCD_String_xy(1, 0, line_1);
-    LCD_String_xy(2, 0, line_2);
+    LCD_String_xy(2, 0, display_2);
+        
+    
+    if((freq_red > 10) || (freq_green > 10) || (freq_blue > 10)){
+        if((freq_red > freq_blue) && (freq_red > freq_green))          return RED;
+        else if((freq_green > freq_blue) && (freq_green > freq_red))   return GREEN;    
+        else if((freq_blue > freq_red) && (freq_blue > freq_green))    return BLUE;
+    }
+    
+    return NO_COLOR;
 }
 
 #endif	/* TCS3200_H */
