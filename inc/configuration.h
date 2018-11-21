@@ -69,7 +69,7 @@
 
 #define _XTAL_FREQ  4000000
 
-char interrupt_flag = 0xFF;
+char interrupt_flag = 0x00;
 
 float DutyPWM1 = 6.7;
 float DutyPWM2 = 5.1;
