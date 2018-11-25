@@ -71,7 +71,6 @@
 
 char interrupt_flag = 0x00;
 
-float DutyPWM1 = 6.7;
-float DutyPWM2 = 5.1;
+float DutyPWM1 = 4.3;
 
 #endif	/* CONFIGURATION_H */

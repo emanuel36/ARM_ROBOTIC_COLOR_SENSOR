@@ -6,7 +6,6 @@
 #include <xc.h>
 #include <pic18f4550.h>
 #include "configuration.h"
-#include "lcd16x2.h"
 
 #define INT0_FLAG 0x1
 #define INT1_FLAG 0x2
@@ -82,7 +81,6 @@ void interrupt ISR(){
     if(INTCON3bits.INT1IF){      
         INTCON3bits.INT1IF = 0;
         interrupt_flag = interrupt_flag | INT1_FLAG;
-        DutyPWM1 -= 0.1;
     }
     
     if(INTCON3bits.INT2IF){   

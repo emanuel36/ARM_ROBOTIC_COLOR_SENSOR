@@ -2,7 +2,6 @@
 #define	TCS3200_H
 
 #include "interrupt.h"
-#include "lcd16x2.h"
 
 #define NO_COLOR 0
 #define RED      1
@@ -78,12 +77,7 @@ int get_color(){
     __delay_ms(10);
     freq_blue = get_freq()/10;
     
-//    char display_2[16];
-//    sprintf(display_2, "R:%d G:%d B:%d", freq_red, freq_green, freq_blue);
-//    LCD_Clear();
-//    LCD_String_xy(2, 0, display_2);
-    
-    if((freq_red > 10) || (freq_green > 10) || (freq_blue > 10)){
+    if((freq_red > 5) || (freq_green > 5) || (freq_blue > 5)){
         if((freq_red > freq_blue) && (freq_red > freq_green))          return RED;
         else if((freq_green > freq_blue) && (freq_green > freq_red))   return GREEN;    
         else if((freq_blue > freq_red) && (freq_blue > freq_green))    return BLUE;

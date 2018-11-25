@@ -20,14 +20,14 @@ void braco_rb(unsigned int linha, unsigned int coluna){
 }
 
 int *matrix_scan(){
-    int linha, coluna, position[3];
+    int linha = 0, coluna = 0, position[3];
     LCD_Clear();
     LCD_String_xy(1, 4, "SCANNING");
     LCD_String_xy(2, 5, "MATRIX");
     for(coluna = 0; coluna < 3; coluna++){
         for(linha = 0; linha < 3; linha++){
             braco_rb(linha, coluna);
-            __delay_ms(300);
+            __delay_ms(150);
             position[0] = get_color();
             if(position[0] != NO_COLOR){
                 braco_rb(1,1);
