@@ -11,7 +11,7 @@ PIC18F4550
 XC8 v1.41
 
 ## Usage
-![Esquemático](hhttps://github.com/emanuel36/ARM_ROBOTIC_COLOR_SENSOR/blob/master/esquem%C3%A1tico.jpg)
+![Esquemático](https://github.com/emanuel36/ARM_ROBOTIC_COLOR_SENSOR/blob/master/esquem%C3%A1tico.jpg)
 
 ## Demonstration
 [Youtube](http://www.youtube.com.br)
