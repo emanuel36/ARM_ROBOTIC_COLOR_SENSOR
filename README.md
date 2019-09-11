@@ -13,5 +13,5 @@ XC8 v1.41
 ## Demonstration
 [Youtube](https://www.youtube.com/watch?v=2ZaIC7OQy5A)
 
-## Usage
+## Schematic
 ![Esquemático](https://github.com/emanuel36/ARM_ROBOTIC_COLOR_SENSOR/blob/master/esquem%C3%A1tico.jpg)
